@@ -57,7 +57,7 @@ const SideBar = () => {
         </TooltipProvider>
       </nav>
       <nav className="mt-auto flex justify-center pb-4">
-        <UserButton afterSignOutUrl="/sign-in" />
+        <UserButton />
       </nav>
     </aside>
   );
