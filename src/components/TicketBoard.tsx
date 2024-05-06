@@ -1,10 +1,8 @@
 "use client";
 
-import { useSession } from "@clerk/nextjs";
 import type { inferRouterOutputs } from "@trpc/server";
-import Link from "next/link";
 import { useRouter } from "next/navigation";
-import React, { use } from "react";
+import React from "react";
 import TicketBadge from "~/components/TicketBadge";
 import { Badge } from "~/components/ui/badge";
 import { ScrollArea } from "~/components/ui/scroll-area";
