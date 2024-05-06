@@ -1,5 +1,4 @@
 "use client";
-
 import React, { useState } from "react";
 import { Label } from "~/components/ui/label";
 import {
@@ -59,6 +58,7 @@ const Page = () => {
       {
         onSuccess: (res) => {
           router.push(`${res}`);
+          router.refresh();
         },
         onError: (error) => {
           if (error.data?.zodError?.fieldErrors) {
@@ -118,7 +118,7 @@ const Page = () => {
             <Button type="submit" variant="default" className="self-e">
               Create Ticket
             </Button>
-            <Button type="submit" variant="link">
+            <Button onClick={() => router.back()} variant="link">
               Cancel
             </Button>
           </CardFooter>

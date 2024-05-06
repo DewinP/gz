@@ -1,4 +1,6 @@
-import { TicketIcon, SettingsIcon, User2Icon } from "lucide-react";
+import { UserButton } from "@clerk/nextjs";
+import { TicketIcon, PlusCircle } from "lucide-react";
+import Link from "next/link";
 import React from "react";
 import { Button } from "~/components/ui/button";
 import {
@@ -20,14 +22,16 @@ const SideBar = () => {
         <TooltipProvider>
           <Tooltip>
             <TooltipTrigger asChild>
-              <Button
-                variant="ghost"
-                size="icon"
-                className="rounded-lg bg-muted"
-                aria-label="Tickets"
-              >
-                <TicketIcon className="size-5" />
-              </Button>
+              <Link href="/">
+                <Button
+                  className="rounded-lg"
+                  variant="ghost"
+                  size="icon"
+                  aria-label="Tickets"
+                >
+                  <TicketIcon />
+                </Button>
+              </Link>
             </TooltipTrigger>
             <TooltipContent side="right" sideOffset={5}>
               Tickets
@@ -35,39 +39,25 @@ const SideBar = () => {
           </Tooltip>
           <Tooltip>
             <TooltipTrigger asChild>
-              <Button
-                variant="ghost"
-                size="icon"
-                className="rounded-lg"
-                aria-label="Models"
-              >
-                <User2Icon className="size-5" />
-              </Button>
+              <Link href="/tickets/create">
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  className="rounded-lg"
+                  aria-label="Models"
+                >
+                  <PlusCircle className="size-5" />
+                </Button>
+              </Link>
             </TooltipTrigger>
             <TooltipContent side="right" sideOffset={5}>
-              Users
+              Create Ticket
             </TooltipContent>
           </Tooltip>
         </TooltipProvider>
       </nav>
-      <nav className="mt-auto grid gap-1 p-2">
-        <TooltipProvider>
-          <Tooltip>
-            <TooltipTrigger asChild>
-              <Button
-                variant="ghost"
-                size="icon"
-                className="mt-auto rounded-lg"
-                aria-label="Account"
-              >
-                <SettingsIcon className="size-5" />
-              </Button>
-            </TooltipTrigger>
-            <TooltipContent side="right" sideOffset={5}>
-              Settings
-            </TooltipContent>
-          </Tooltip>
-        </TooltipProvider>
+      <nav className="mt-auto flex justify-center pb-4">
+        <UserButton />
       </nav>
     </aside>
   );

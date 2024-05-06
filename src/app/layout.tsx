@@ -19,9 +19,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body
-        className={`font-sans ${inter.variable} mx-auto max-w-[1920px] overflow-hidden`}
+        className={`font-sans ${inter.variable} mx-auto h-screen max-w-[1920px]`}
       >
         <ClerkProvider>
           <ThemeProvider attribute="class">
