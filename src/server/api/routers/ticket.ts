@@ -1,3 +1,5 @@
+import { currentUser } from "@clerk/nextjs/server";
+import { desc } from "drizzle-orm";
 import { z } from "zod";
 
 import {
@@ -17,24 +19,44 @@ export const ticketRouter = createTRPCRouter({
     }),
 
   create: protectedProcedure
-    .input(z.object({ description: z.string().min(1) }))
-    .mutation(async ({ ctx, input }) => {
-      await ctx.db.insert(tickets).values({
-        name: `${ctx.auth.user?.firstName} ${ctx.auth.user?.lastName}`,
-        userId: ctx.auth.userId,
-        email:
-          ctx.auth.user?.emailAddresses[0]?.emailAddress ?? "not-set@500.com",
-        description: input.description,
-      });
+    .input(
+      z.object({
+        description: z.string().min(1, {
+          message: "Description of the ticket is required",
+        }),
+        title: z.string().min(1, {
+          message: "Title of the ticket is required",
+        }),
+      }),
+    )
+    .mutation(async ({ ctx, input }): Promise<string> => {
+      const res = await ctx.db
+        .insert(tickets)
+        .values({
+          userId: ctx.auth.userId,
+          description: input.description,
+          email: ctx.auth.sessionClaims.email,
+          name: ctx.auth.sessionClaims.full_name,
+          title: input.title,
+        })
+        .returning();
+
+      return res[0]!.id;
     }),
 
   getAllTicketsByUser: protectedProcedure.query(async ({ ctx }) => {
-    if (ctx.auth.user?.privateMetadata.isAdmin) {
-      return ctx.db.query.tickets.findMany();
+    const user = await currentUser();
+    const isAdmin = user?.privateMetadata.isAdmin;
+
+    if (isAdmin) {
+      return ctx.db.query.tickets.findMany({
+        orderBy: [desc(tickets.createdAt)],
+      });
     }
 
     return ctx.db.query.tickets.findMany({
-      with: { userId: ctx.auth.userId },
+      orderBy: [desc(tickets.createdAt)],
+      where: (ticket, { eq }) => eq(ticket.userId, ctx.auth.userId),
     });
   }),
 });

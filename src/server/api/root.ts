@@ -2,6 +2,7 @@ import { ticketRouter } from "~/server/api/routers/ticket";
 import { createCallerFactory, createTRPCRouter } from "~/server/api/trpc";
 
 import { EventEmitter } from "events";
+import { commentRouter } from "~/server/api/routers/comment";
 export const eventEmitter = new EventEmitter();
 
 /**
@@ -11,6 +12,7 @@ export const eventEmitter = new EventEmitter();
  */
 export const appRouter = createTRPCRouter({
   ticket: ticketRouter,
+  comment: commentRouter,
 });
 
 // export type definition of API

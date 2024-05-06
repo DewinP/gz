@@ -1,6 +1,6 @@
 import React from "react";
 
-import TicketItem from "~/components/TicketItem";
+import TicketBoard from "~/components/TicketBoard";
 import TicketDisplay from "~/components/TicketDisplay";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "~/components/ui/tabs";
 import { Separator } from "~/components/ui/separator";
@@ -45,13 +45,13 @@ const page = () => {
             </form>
           </div>
           <TabsContent value="new" className="m-0">
-            <TicketItem flag />
+            <TicketBoard allTickets={[]} />
           </TabsContent>
           <TabsContent value="in-progress" className="m-0">
-            <TicketItem flag />
+            <TicketBoard allTickets={[]} />
           </TabsContent>
           <TabsContent value="resolved" className="m-0">
-            <TicketItem flag={false} />
+            <TicketBoard allTickets={[]} />
           </TabsContent>
         </Tabs>
       </div>

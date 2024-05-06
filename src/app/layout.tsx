@@ -19,20 +19,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <ClerkProvider>
-      <html lang="en">
-        <body
-          className={`font-sans ${inter.variable} mx-auto max-w-[1920px] overflow-hidden`}
-        >
-          <ThemeProvider
-            attribute="class"
-            defaultTheme="dark"
-            disableTransitionOnChange
-          >
+    <html lang="en">
+      <body
+        className={`font-sans ${inter.variable} mx-auto max-w-[1920px] overflow-hidden`}
+      >
+        <ClerkProvider>
+          <ThemeProvider attribute="class">
             <TRPCReactProvider>{children}</TRPCReactProvider>
           </ThemeProvider>
-        </body>
-      </html>
-    </ClerkProvider>
+        </ClerkProvider>
+      </body>
+    </html>
   );
 }
