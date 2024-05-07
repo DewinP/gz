@@ -14,19 +14,20 @@ export function generateShortDisplayId(): string {
 
 //format date to be time since
 export function formatTimeSince(date: string | number | Date) {
-  // it should formate the date with time since
-  const time = new Date(date).getTime();
-  const now = Date.now();
-  const diff = now - time;
-  const seconds = diff / 1000;
-  const minutes = seconds / 60;
-  if (seconds < 60) {
-    return "Just now";
-  }
+  const optionsDate: Intl.DateTimeFormatOptions = {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  };
+  const optionsTime: Intl.DateTimeFormatOptions = {
+    hour: "2-digit",
+    minute: "2-digit",
+    hour12: true,
+  };
 
-  if (minutes < 60) {
-    return `${Math.floor(minutes)}m ago`;
-  }
+  const dateObj = new Date(date);
+  const formattedDate = dateObj.toLocaleDateString("en-US", optionsDate);
+  const formattedTime = dateObj.toLocaleTimeString("en-US", optionsTime);
 
-  return new Date(date).toLocaleString();
+  return `${formattedDate} at ${formattedTime}`;
 }

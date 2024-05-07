@@ -54,6 +54,11 @@ export const columns: ColumnDef<Ticket>[] = [
     ),
   },
   {
+    accessorKey: "title",
+    header: "Title",
+    cell: ({ row }) => <div>{row.getValue("title")}</div>,
+  },
+  {
     accessorKey: "status",
     header: ({ column }) => (
       <div className="flex items-center">
@@ -79,11 +84,7 @@ export const columns: ColumnDef<Ticket>[] = [
     header: "Email",
     cell: ({ row }) => <div className="lowercase">{row.getValue("email")}</div>,
   },
-  {
-    accessorKey: "title",
-    header: "Title",
-    cell: ({ row }) => <div>{row.getValue("title")}</div>,
-  },
+
   {
     accessorKey: "updatedAt",
     header: ({ column }) => (

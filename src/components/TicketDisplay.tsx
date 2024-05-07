@@ -23,20 +23,22 @@ const TicketDisplay = async ({ ticketId }: { ticketId: string }) => {
           <div className="flex items-start p-4">
             <div className="flex items-start gap-4 text-sm">
               <div className="grid gap-1">
-                <div className="font-bold">{ticket.title}</div>
+                <div className="flex gap-2">
+                  <TicketBadge status={ticket.status} />
+                  <div className="text-2xl font-bold">{ticket.title}</div>
+                </div>
                 <div className=" text-muted-foreground">{ticket.name}</div>
                 <div className="line-clamp-1 text-xs">
                   <span className="font-xs">Reply-To:</span> {ticket.email}
                 </div>
               </div>
             </div>
-            <div className="ml-auto  justify-center text-xs text-muted-foreground">
+            <div className="ml-auto flex flex-col items-center justify-center text-xs text-muted-foreground">
               <Badge className="rounded-none" variant="outline">
                 Ticket #{ticket.ticketDisplayId.toUpperCase()}
               </Badge>
-              <TicketBadge status={ticket.status} />
               <div className="text-center text-muted-foreground">
-                {formatTimeSince(ticket.createdAt)}
+                {formatTimeSince(ticket.updatedAt)}
               </div>
             </div>
           </div>
