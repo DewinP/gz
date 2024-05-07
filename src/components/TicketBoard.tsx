@@ -44,7 +44,7 @@ const TicketBoard = ({
     <div className="mx-auto h-[calc(100vh-100px)] w-full max-w-5xl flex-1 justify-center ">
       <div className="max-w-7xl justify-center">
         <div className="flex items-center justify-between p-4">
-          <h1 className="text-lg font-bold">Tickets</h1>
+          <h1 className="text-lg font-bold">My Submitted Tickets</h1>
           <div className="flex gap-2">
             <Select
               value={filter}
