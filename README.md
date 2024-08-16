@@ -12,6 +12,7 @@ Small project to manage tickets. Users can submit tickets and admins can manage 
 - **Styling**: Tailwind CSS, Shadcn/ui
 - **Backend Communication**: tRPC
 - **Database**: PostgreSQL/Supabase
+- **Authentication**: ClerkJs
 
 ## Features
 
@@ -20,6 +21,12 @@ Small project to manage tickets. Users can submit tickets and admins can manage 
 - /ticket/:id - users can view a specific ticket and its details. Admins can also manage the ticket.
 
 (Demo live)[https://gz-eight.vercel.app/sign-in]
+
+For the admin view use:
+Email: admin@test.com
+Password: 123123
+
+
 
 ## Installation
 
