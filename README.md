@@ -19,6 +19,8 @@ Small project to manage tickets. Users can submit tickets and admins can manage 
 - /tickets - users can see the tickets they have submitted.
 - /ticket/:id - users can view a specific ticket and its details. Admins can also manage the ticket.
 
+(Demo live)[https://gz-eight.vercel.app/sign-in]
+
 ## Installation
 
 Add the variables found in .env.example to a .env file in the root directory.
