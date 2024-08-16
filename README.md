@@ -1,5 +1,5 @@
 
-# GZ Project
+# Z Ticketing System
 
 ## Description
 
