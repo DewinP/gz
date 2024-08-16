@@ -3,7 +3,7 @@
 
 ## Description
 
-Small project to manage tickets. Users can submit tickets and admins can manage them.
+Small project to manage tickets. Users can submit tickets and admins can manage them. Made in a few hours.
 
 ## Technologies
 
@@ -26,6 +26,9 @@ For the admin view use:
 Email: admin@test.com
 Password: 123123
 
+![image](https://github.com/user-attachments/assets/594bf87b-3f22-416a-ad73-b4d707e502d6)
+
+![image](https://github.com/user-attachments/assets/ab9a31b5-9406-4e18-9810-bcef59194310)
 
 
 ## Installation
